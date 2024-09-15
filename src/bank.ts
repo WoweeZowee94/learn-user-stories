@@ -61,4 +61,24 @@ export default class Bank {
     return isAccountExists.balance;
   }
 
+  /**
+   * Withdraws funds from a bank account if it exists within the system
+   * @param accountNumber the account number of the users account
+   * @param funds the funds to withdraw from the account
+   * @returns the new balance of the account
+   */
+  public withdrawFunds(accountNumber: string, funds: number) {
+    const account = this.findAccount(accountNumber);
+    if (!account) {
+      throw new Error("Account does not exists in the system...");
+    }
+
+    if (account.balance >= funds) {
+      account.balance -= funds
+      return account.balance
+    } else {
+      throw new Error("Account does not have enough funds to withdraw the requested amount...");
+    }
+  }
+
 }
