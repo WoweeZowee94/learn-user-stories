@@ -39,7 +39,7 @@ console.log(`----------------------`);
 console.log(`----Story #3 Tests----`);
 
 // Scenario 1: A successful withdrawal
-const newAccount = bnk.createAccount("Super Mario", 55, "1337");
+const accountTwo = bnk.createAccount("Super Mario", 55, "1337");
 bnk.depositFunds("1337", 10000);
 const newBalance = bnk.withdrawFunds("1337", 5000);
 
@@ -64,5 +64,32 @@ try {
 } catch {
   console.log("Scenario 3 passed!");
 }
+
+console.log(`----------------------`);
+console.log(`----Story #4 Tests----`);
+
+const accountThree = bnk.createAccount("Luigi", 56, "1227");
+
+// Scenario 1: A successful balance inquiry
+bnk.depositFunds("1227", 4500);
+const checkBalance = bnk.checkBalance("1227");
+if (checkBalance === 4500) {
+  console.log("Scenario 1 has passed!");
+} else {
+  console.log("Scenario 1 has failed!");
+}
+
+// Scenario 2: A failed balance inquiry
+try {
+  bnk.checkBalance("1400");
+  console.log("Scenario 2 has failed!");
+} catch {
+  console.log("Scenario 2 has passed!");
+}
+
+console.log(`----------------------`);
+
+
+
 
 
